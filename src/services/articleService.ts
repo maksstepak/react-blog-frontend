@@ -7,7 +7,10 @@ interface ArticlesResponse {
 }
 
 class ArticleService {
-  async paginate(limit: number = 10, offset: number = 0) {
+  async paginate(
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<ArticlesResponse> {
     const response = await apiClient.get<ArticlesResponse>(
       `/articles?limit=${limit}&offset=${offset}`
     );
