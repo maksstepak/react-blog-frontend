@@ -30,7 +30,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, logout } = authSlice.actions;
+const { login, logout } = authSlice.actions;
 
 export const loginUser = (accessToken: string): AppThunk => async (
   dispatch
