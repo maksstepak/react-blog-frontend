@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
 
 import { Article } from '../../types/Article';
 import { colors, fontSizes } from '../../styles';
@@ -34,7 +35,7 @@ const ArticleItem: React.FC<Props> = ({ article }) => {
     <StyledArticle>
       <Title>{article.title}</Title>
       <Author>{article.author.email}</Author>
-      <Time>{article.createdAt}</Time>
+      <Time>{dayjs(article.createdAt).format('YYYY-MM-DD HH:mm:ss')}</Time>
     </StyledArticle>
   );
 };
