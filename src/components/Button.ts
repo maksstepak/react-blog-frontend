@@ -8,7 +8,7 @@ const Button = styled.button`
   color: ${colors.white};
   background: ${colors.black};
   border-radius: 0px;
-  border: none;
+  border: solid 2px ${colors.black};
   font-weight: 700;
   :hover:enabled {
     color: ${colors.black};

@@ -7,6 +7,7 @@ import * as styles from './styles';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import ArticleList from './pages/ArticleList/ArticleList';
+import Login from './pages/Login/Login';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -40,6 +41,7 @@ const App: React.FC = () => {
           <Content>
             <Switch>
               <Route exact path="/" component={ArticleList} />
+              <Route path="/login" component={Login} />
             </Switch>
           </Content>
         </main>
