@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { Toaster } from 'react-hot-toast';
 
 import * as styles from './styles';
 import Header from './layout/Header';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </Wrapper>
+      <Toaster />
     </Router>
   );
 };

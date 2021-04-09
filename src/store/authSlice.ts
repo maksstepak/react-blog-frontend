@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import authService from '../services/authService';
 import { UserWithDetails } from '../types/User';
 import { AppThunk, RootState } from './store';
+import toast from 'react-hot-toast';
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -41,6 +42,8 @@ export const loginUser = (accessToken: string): AppThunk => async (
   localStorage.setItem('authenticatedUser', JSON.stringify(user));
 
   dispatch(login(user));
+
+  toast.success('You have been logged in.');
 };
 
 export const logoutUser = (): AppThunk => (dispatch) => {
@@ -48,6 +51,8 @@ export const logoutUser = (): AppThunk => (dispatch) => {
   localStorage.removeItem('authenticatedUser');
 
   dispatch(logout());
+
+  toast.success('You have been logged out.');
 };
 
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
