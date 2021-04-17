@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import * as styles from '../styles';
+import useAuth from '../hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../store/authSlice';
 
 const StyledNav = styled.nav``;
 
@@ -25,15 +28,36 @@ const StyledLink = styled(Link)`
 `;
 
 const Navigation: React.FC = () => {
+  const { isLoggedIn } = useAuth();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleLogoutClick = () => {
+    dispatch(logoutUser());
+    history.push('/');
+  };
+
   return (
     <StyledNav>
       <List>
         <ListItem>
           <StyledLink to="/">Home</StyledLink>
         </ListItem>
-        <ListItem>
-          <StyledLink to="/login">Login</StyledLink>
-        </ListItem>
+        {isLoggedIn ? (
+          <>
+            <ListItem>
+              <StyledLink to="#" onClick={handleLogoutClick}>
+                Log out
+              </StyledLink>
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <ListItem>
+              <StyledLink to="/login">Login</StyledLink>
+            </ListItem>
+          </>
+        )}
       </List>
     </StyledNav>
   );
