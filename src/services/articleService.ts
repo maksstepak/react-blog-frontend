@@ -1,4 +1,5 @@
 import { Article } from '../types/Article';
+import { Comment } from '../types/Comment';
 import apiClient from '../utils/apiClient';
 
 interface ArticlesResponse {
@@ -14,6 +15,16 @@ class ArticleService {
     const response = await apiClient.get<ArticlesResponse>(
       `/articles?limit=${limit}&offset=${offset}`
     );
+    return response.data;
+  }
+
+  async findOneById(id: number): Promise<Article> {
+    const response = await apiClient.get<Article>(`/articles/${id}`);
+    return response.data;
+  }
+
+  async getComments(id: number): Promise<Comment[]> {
+    const response = await apiClient.get<Comment[]>(`/articles/${id}/comments`);
     return response.data;
   }
 }
