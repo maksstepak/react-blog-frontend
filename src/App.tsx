@@ -9,6 +9,7 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 import ArticleList from './pages/ArticleList/ArticleList';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import ArticleDetails from './pages/ArticleDetails/ArticleDetails';
 
 const GlobalStyle = createGlobalStyle`
@@ -44,6 +45,7 @@ const App: React.FC = () => {
             <Switch>
               <Route exact path="/" component={ArticleList} />
               <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
               <Route path="/articles/:articleId" component={ArticleDetails} />
             </Switch>
           </Content>

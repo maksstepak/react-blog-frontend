@@ -55,6 +55,7 @@ const Navigation: React.FC = () => {
           <>
             <ListItem>
               <StyledLink to="/login">Login</StyledLink>
+              <StyledLink to="/register">Registration</StyledLink>
             </ListItem>
           </>
         )}
